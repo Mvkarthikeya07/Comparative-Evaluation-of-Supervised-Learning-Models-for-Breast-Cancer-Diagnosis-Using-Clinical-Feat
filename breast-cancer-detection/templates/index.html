@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CancerScan App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app">
+
+    <div class="app-header">
+        <h1>🩺 CancerScan</h1>
+        <p>Breast Cancer Detection</p>
+    </div>
+
+    <form action="/predict" method="post" class="form-card">
+
+        <h3>Mean Features</h3>
+        {% for f in features[:10] %}
+            <div class="field">
+                <label>{{ f.replace("_", " ").title() }}</label>
+                <input type="number" step="any" name="{{ f }}" required>
+            </div>
+        {% endfor %}
+
+        <h3>Standard Error Features</h3>
+        {% for f in features[10:20] %}
+            <div class="field">
+                <label>{{ f.replace("_", " ").title() }}</label>
+                <input type="number" step="any" name="{{ f }}" required>
+            </div>
+        {% endfor %}
+
+        <h3>Worst Features</h3>
+        {% for f in features[20:] %}
+            <div class="field">
+                <label>{{ f.replace("_", " ").title() }}</label>
+                <input type="number" step="any" name="{{ f }}" required>
+            </div>
+        {% endfor %}
+
+        <button class="btn">Analyze</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

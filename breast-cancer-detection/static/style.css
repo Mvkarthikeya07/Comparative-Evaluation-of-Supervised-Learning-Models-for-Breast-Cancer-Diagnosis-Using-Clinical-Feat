@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f4f6f9;
+}
+
+.app {
+    max-width: 420px;
+    margin: auto;
+    min-height: 100vh;
+}
+
+.app-header {
+    background: linear-gradient(135deg, #ff4b5c, #ff7a8a);
+    color: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 0 0 20px 20px;
+}
+
+.form-card {
+    background: white;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+h3 {
+    color: #ff4b5c;
+    margin-top: 20px;
+}
+
+.field {
+    margin-bottom: 12px;
+}
+
+label {
+    font-size: 13px;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #ff4b5c;
+    color: white;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.secondary {
+    background: #ddd;
+    color: #333;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.result-card {
+    background: white;
+    margin: 40px 20px;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+}
