@@ -168,6 +168,27 @@ http://127.0.0.1:5000
 
 ---
 
+🏢 Internship Context
+
+This project was developed during my AI/ML Internship at InternPe
+(Nov 24, 2025 – Dec 21, 2025).
+
+The work focused on applying practical machine learning concepts in healthcare AI, including:
+
+Medical dataset preprocessing and feature scaling
+
+Supervised classification using Logistic Regression
+
+Model evaluation and performance analysis
+
+Backend development using Flask
+
+Deployment of ML models as web applications
+
+Designing interpretable and user-friendly healthcare ML systems
+
+This project represents academic and practical work completed during the internship period, emphasizing responsible AI development in healthcare applications.
+
 ## 🎓 Academic & Educational Value
 
 This project demonstrates:
