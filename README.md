@@ -1,4 +1,4 @@
-# 🩺 CancerScan AI – Breast Cancer Detection Web App
+# 🩺 Machine Learning–Based Breast Cancer Detection and Classification System
 
 **CancerScan AI** is an end-to-end **Machine Learning–powered web application** that predicts whether a breast tumor is **Benign** or **Malignant** using clinically significant diagnostic features.
 
