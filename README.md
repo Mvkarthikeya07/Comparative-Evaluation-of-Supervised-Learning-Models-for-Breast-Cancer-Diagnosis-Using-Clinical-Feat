@@ -1,75 +1,84 @@
-# 🩺 CancerScan AI — Breast Cancer Diagnosis Using Machine Learning
+# 🩺 CancerScan AI — Comparative Evaluation of Supervised Learning Models for Breast Cancer Diagnosis Using Clinical Features
 
-> **End-to-end Machine Learning system for breast cancer risk classification using clinical diagnostic features.**
-> Built with Python · Scikit-learn · Flask · Pandas | Wisconsin Breast Cancer Diagnostic Dataset
+> **End-to-end Machine Learning system for breast cancer diagnosis using clinical diagnostic features.**
+>
+> Built with **Python · Scikit-learn · Flask · Pandas · NumPy**
+>
+> Based on the **Wisconsin Breast Cancer Diagnostic Dataset (569 patient records)**
 
 ---
 
 # 📋 Table of Contents
 
-1. Project Overview
-2. Live Demo & Screenshots
-3. Dataset
-4. Machine Learning Pipeline
-5. Model Performance
-6. Project Structure
-7. Getting Started
-8. Application Workflow
-9. Technologies Used
-10. Future Roadmap
-11. Internship Background
-12. Author
-13. License
+1. [Project Overview](#-project-overview)
+2. [Live Demo & Screenshots](#-live-demo--screenshots)
+3. [Dataset](#-dataset)
+4. [Machine Learning Pipeline](#-machine-learning-pipeline)
+5. [Model Performance](#-model-performance)
+6. [Project Structure](#-project-structure)
+7. [Getting Started](#-getting-started)
+8. [Application Workflow](#-application-workflow)
+9. [Technologies Used](#-technologies-used)
+10. [Future Roadmap](#-future-roadmap)
+11. [Internship Background](#-internship-background)
+12. [Academic Value](#-academic-value)
+13. [Author](#-author)
+14. [License](#-license)
 
 ---
 
-# 🎯 Project Overview
+## 🎯 Project Overview
 
-Breast cancer is among the most common forms of cancer worldwide. Early detection plays a crucial role in improving treatment outcomes and patient survival rates.
+Breast cancer remains one of the most prevalent cancers worldwide, making early diagnosis critical for improving treatment outcomes and patient survival.
 
-CancerScan AI is an end-to-end Machine Learning application that predicts whether a breast tumor is:
+**CancerScan AI** is an end-to-end Machine Learning application that predicts whether a breast tumor is:
 
-* ✅ Benign (Non-Cancerous)
-* ❌ Malignant (Cancerous)
+* ✅ **Benign (Non-Cancerous)**
+* ❌ **Malignant (Cancerous)**
 
-The system leverages clinically relevant diagnostic measurements extracted from digitized breast tissue images and provides instant predictions through an intuitive Flask-based web interface.
+The system utilizes clinically relevant measurements extracted from digitized images of breast tissue cell nuclei and applies supervised learning techniques to perform accurate classification.
 
-> ⚠️ Disclaimer:
-> This project is developed strictly for educational and academic purposes and must not be used for real-world medical diagnosis or clinical decision-making.
+Unlike rule-based systems, the model learns diagnostic patterns directly from historical medical data and generalizes them to previously unseen patient samples.
 
----
-
-## Core Objectives
-
-| Goal                                    | Approach                    |
-| --------------------------------------- | --------------------------- |
-| Early breast cancer risk assessment     | Supervised Classification   |
-| Learn from clinical diagnostic features | Logistic Regression         |
-| Handle incomplete records               | Mean-value imputation       |
-| Improve model stability                 | Feature scaling             |
-| Deliver real-time predictions           | Flask web application       |
-| Maintain reproducible ML workflow       | Pipeline-based architecture |
+> ⚠️ **Disclaimer**
+>
+> This project is developed strictly for academic and educational purposes. It is not intended for clinical diagnosis, treatment planning, or medical decision-making.
 
 ---
 
-## Problem Statement
+### Core Objectives
+
+| Goal                              | Approach                |
+| --------------------------------- | ----------------------- |
+| Early cancer risk assessment      | Binary Classification   |
+| Learn from clinical features      | Logistic Regression     |
+| Handle incomplete medical records | Mean Value Imputation   |
+| Improve prediction stability      | StandardScaler          |
+| Real-time predictions             | Flask Web Application   |
+| Reproducible ML workflow          | Modular Pipeline Design |
+
+---
+
+### Problem Statement
 
 **Type:** Supervised Learning — Binary Classification
 
 **Target Variable:** `diagnosis`
 
-* M → Malignant
-* B → Benign
+| Value | Meaning   |
+| ----- | --------- |
+| M     | Malignant |
+| B     | Benign    |
 
-The model learns patterns from historical clinical measurements and predicts tumor classification for previously unseen samples.
+The objective is to classify breast tumors based on 30 diagnostic measurements obtained from digitized breast tissue images.
 
 ---
 
-# 🖥️ Live Demo & Screenshots
+## 🖥️ Live Demo & Screenshots
 
-## 🔹 Home Page — Clinical Feature Input Interface
+### 🔹 Home Page — Clinical Feature Input Interface
 
-Users enter diagnostic measurements obtained from breast tissue analysis.
+Users enter diagnostic measurements through a clean and responsive web interface.
 
 ![Home Page](https://github.com/user-attachments/assets/62f23fb7-6eb1-4082-a047-a243191eab22)
 
@@ -79,67 +88,70 @@ Users enter diagnostic measurements obtained from breast tissue analysis.
 
 ---
 
-## 🔹 Benign Prediction Result
+### 🔹 Benign Prediction Result
 
-The model predicts a non-cancerous tumor classification.
+When the model predicts a non-cancerous tumor.
 
-![Benign Result](https://github.com/user-attachments/assets/ce3bdc92-8621-4ffd-82f9-dbdc098b6e05)
-
----
-
-## 🔹 Malignant Prediction Result
-
-The model predicts a potentially cancerous tumor classification.
-
-![Malignant Result](https://github.com/user-attachments/assets/35ce9a9f-db1e-4e89-b5ff-403f1d7c3aca)
+![Benign Prediction](https://github.com/user-attachments/assets/ce3bdc92-8621-4ffd-82f9-dbdc098b6e05)
 
 ---
 
-## 🔹 End-to-End Workflow
+### 🔹 Malignant Prediction Result
+
+When the model predicts a potentially cancerous tumor.
+
+![Malignant Prediction](https://github.com/user-attachments/assets/35ce9a9f-db1e-4e89-b5ff-403f1d7c3aca)
+
+---
+
+### 🔹 End-to-End Workflow
 
 ```text
-Clinical Measurements
-          │
-          ▼
- User Input Form
-          │
-          ▼
- Data Validation
-          │
-          ▼
- Missing Value Handling
-          │
-          ▼
- Feature Scaling
-          │
-          ▼
- Logistic Regression Prediction
-          │
-          ▼
- Benign / Malignant Classification
+Patient Diagnostic Features
+            │
+            ▼
+      User Input Form
+            │
+            ▼
+      Data Validation
+            │
+            ▼
+ Missing Value Imputation
+            │
+            ▼
+     Feature Scaling
+            │
+            ▼
+ Logistic Regression Model
+            │
+            ▼
+ Benign / Malignant Prediction
+            │
+            ▼
+      Result Display
 ```
 
 ---
 
-# 📊 Dataset
+## 📊 Dataset
 
-The project uses the Wisconsin Breast Cancer Diagnostic Dataset, one of the most widely used benchmark datasets in medical machine learning research.
+The project uses the **Wisconsin Breast Cancer Diagnostic Dataset**, a widely used benchmark dataset in medical machine learning research.
 
-## Dataset Overview
+### Dataset Overview
 
-| Attribute     | Value                   |
-| ------------- | ----------------------- |
-| Total Records | 569                     |
-| Features      | 30 Diagnostic Features  |
-| Classes       | Benign, Malignant       |
-| Problem Type  | Binary Classification   |
-| Domain        | Healthcare / Medical AI |
+| Attribute           | Value                 |
+| ------------------- | --------------------- |
+| Total Samples       | 569                   |
+| Predictive Features | 30                    |
+| Classes             | Benign, Malignant     |
+| Problem Type        | Binary Classification |
+| Domain              | Healthcare AI         |
 
 ---
 
-## Feature Categories
+### Feature Description
 
-The dataset contains measurements computed from digitized images of breast mass cell nuclei.
+The dataset contains numerical measurements extracted from digitized images of breast tissue cell nuclei.
 
 Examples include:
 
@@ -150,21 +162,33 @@ Examples include:
 * smoothness_mean
 * compactness_mean
 * concavity_mean
+* concave_points_mean
 * symmetry_mean
 * fractal_dimension_mean
 
-Additional standard error and worst-case measurements are also included, resulting in 30 predictive features.
+Additional standard error and worst-case measurements increase the total predictive feature count to **30 clinical attributes**.
 
 ---
 
-# 🧠 Machine Learning Pipeline
+### Class Distribution
+
+| Diagnosis | Count |
+| --------- | ----- |
+| Benign    | 357   |
+| Malignant | 212   |
+
+This distribution provides a realistic healthcare classification problem while maintaining sufficient representation of both classes.
+
+---
+
+## 🧠 Machine Learning Pipeline
 
 ```text
 Raw Dataset (data.csv)
           │
           ▼
- Data Cleaning
- (Drop ID columns)
+ Remove Non-Predictive Columns
+ (ID Column Removal)
           │
           ▼
  Target Encoding
@@ -172,11 +196,11 @@ Raw Dataset (data.csv)
  B → 0
           │
           ▼
- Train/Test Split
- 80% / 20%
+ Train/Test Split (80/20)
           │
           ▼
- Mean Value Imputation
+ Missing Value Imputation
+ (Mean Strategy)
           │
           ▼
  StandardScaler
@@ -186,7 +210,7 @@ Raw Dataset (data.csv)
           │
           ▼
  Model Serialization
- breast_cancer_model.pkl
+ (Joblib)
           │
           ▼
  Flask Deployment
@@ -194,39 +218,64 @@ Raw Dataset (data.csv)
 
 ---
 
-## Training Details
+### Training Configuration
 
-* Algorithm: Logistic Regression
-* Missing Value Strategy: Mean Imputation
-* Feature Scaling: StandardScaler
-* Train/Test Split: 80% / 20%
-* Random State: 42
-* Stratified Sampling: Enabled
-* Model Storage: Joblib
+| Parameter       | Value               |
+| --------------- | ------------------- |
+| Algorithm       | Logistic Regression |
+| Train Split     | 80%                 |
+| Test Split      | 20%                 |
+| Random State    | 42                  |
+| Missing Values  | Mean Imputation     |
+| Feature Scaling | StandardScaler      |
+| Model Storage   | Joblib              |
 
 ---
 
-# 📈 Model Performance
+## 📈 Model Performance
 
-The trained Logistic Regression model achieves:
+The Logistic Regression model achieved approximately:
 
 | Metric              | Value               |
 | ------------------- | ------------------- |
 | Accuracy            | ~96%                |
 | Classification Type | Binary              |
-| Training Method     | Supervised Learning |
+| Model Type          | Logistic Regression |
 | Deployment Status   | Flask Integrated    |
-
-### Performance Interpretation
-
-* High classification accuracy on unseen data
-* Balanced handling of benign and malignant classes
-* Scaled features improve optimization stability
-* Pipeline architecture ensures reproducibility
 
 ---
 
-# 🗂️ Project Structure
+### Performance Insights
+
+* High classification accuracy on unseen test samples
+* Effective separation between benign and malignant tumors
+* Scaled features improve optimization and convergence
+* Pipeline-based preprocessing ensures reproducibility
+
+---
+
+### 📉 Model Evaluation Summary
+
+```text
+Classification Performance
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Accuracy      ████████████████████  ~96%
+
+Precision     High
+
+Recall        High
+
+F1-Score      High
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+> Future versions can include Decision Trees, Random Forests, Support Vector Machines, and Gradient Boosting for comparative benchmarking.
+
+---
+
+## 🗂️ Project Structure
 
 ```text
 CancerScan-AI/
@@ -235,7 +284,7 @@ CancerScan-AI/
 │   └── data.csv
 │
 ├── model/
-│   └── breast_cancer_model.pkl
+│   └── breast_cancer_model_30.pkl
 │
 ├── static/
 │   └── style.css
@@ -252,19 +301,24 @@ CancerScan-AI/
 
 ---
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 
-## Prerequisites
+### Prerequisites
 
 * Python 3.8+
 * pip
 
-### 1️⃣ Clone Repository
+---
+
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/CancerScan-AI.git
+
 cd CancerScan-AI
 ```
+
+---
 
 ### 2️⃣ Install Dependencies
 
@@ -272,7 +326,9 @@ cd CancerScan-AI
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Train Model
+---
+
+### 3️⃣ Train the Model
 
 ```bash
 python train_model.py
@@ -281,12 +337,14 @@ python train_model.py
 Expected Output:
 
 ```text
-✅ Model trained with 30 features
-🎯 Accuracy: ~96%
-💾 Model saved successfully
+Model trained successfully
+Accuracy: ~96%
+Model saved successfully
 ```
 
-### 4️⃣ Launch Application
+---
+
+### 4️⃣ Run the Web Application
 
 ```bash
 python app.py
@@ -300,18 +358,18 @@ http://127.0.0.1:5000
 
 ---
 
-# ⚙️ Application Workflow
+## ⚙️ Application Workflow
 
 ```text
-Step 1 → User enters 30 diagnostic values
+Step 1 → User enters diagnostic measurements
 
 Step 2 → Flask receives POST request
 
 Step 3 → Missing values handled automatically
 
-Step 4 → Features scaled using StandardScaler
+Step 4 → Data standardized using StandardScaler
 
-Step 5 → Logistic Regression predicts class
+Step 5 → Logistic Regression predicts diagnosis
 
 Step 6 → Result displayed as:
 
@@ -324,55 +382,80 @@ Step 6 → Result displayed as:
 
 ---
 
-# 🛠️ Technologies Used
+## 🛠️ Technologies Used
 
 | Layer                  | Technology          |
 | ---------------------- | ------------------- |
-| Language               | Python              |
+| Programming Language   | Python              |
 | Data Processing        | Pandas, NumPy       |
 | Machine Learning       | Scikit-learn        |
 | Classification Model   | Logistic Regression |
-| Feature Scaling        | StandardScaler      |
 | Missing Value Handling | SimpleImputer       |
+| Feature Scaling        | StandardScaler      |
 | Model Persistence      | Joblib              |
-| Backend                | Flask               |
+| Backend Framework      | Flask               |
 | Frontend               | HTML5, CSS3         |
 
 ---
 
-# 🔮 Future Roadmap
+## 🔮 Future Roadmap
 
-| Enhancement                         | Impact |
-| ----------------------------------- | ------ |
-| Prediction Confidence Scores        | High   |
-| Random Forest Comparison            | High   |
-| Support Vector Machine Benchmarking | High   |
-| Feature Importance Visualization    | Medium |
-| Interactive Dashboard               | Medium |
-| Streamlit Deployment                | Medium |
-| Cloud Deployment (AWS/Azure/GCP)    | Medium |
-| Explainable AI (SHAP/LIME)          | High   |
+| Enhancement                       | Expected Impact |
+| --------------------------------- | --------------- |
+| Random Forest Benchmarking        | High            |
+| Support Vector Machine Comparison | High            |
+| Decision Tree Evaluation          | High            |
+| Prediction Confidence Scores      | High            |
+| Feature Importance Visualization  | Medium          |
+| Explainable AI (SHAP/LIME)        | High            |
+| Streamlit Deployment              | Medium          |
+| Cloud Deployment (AWS/Azure/GCP)  | Medium          |
+| Interactive Analytics Dashboard   | Medium          |
 
 ---
 
-# 🏢 Internship Background
+## 🏢 Internship Background
 
-**AI/ML Intern**
-**Organization:** InternPe
-**Duration:** Nov 24, 2025 – Dec 21, 2025
+### AI/ML Intern — InternPe
 
-This project reflects practical industry exposure in:
+**Duration:** November 24, 2025 – December 21, 2025
+
+This project reflects practical experience gained during an AI/ML internship, including:
 
 * Medical dataset preprocessing
-* Healthcare AI applications
-* Logistic Regression modeling
-* Feature scaling and data preparation
-* Machine Learning deployment using Flask
-* Building interpretable healthcare-focused ML systems
+* Supervised classification techniques
+* Feature scaling and normalization
+* Logistic Regression implementation
+* Machine Learning model evaluation
+* Flask-based deployment
+* Healthcare-focused AI system development
+
+The project demonstrates the application of machine learning concepts to a real-world healthcare classification problem.
 
 ---
 
-# 👤 Author
+## 🎓 Academic Value
+
+This project demonstrates:
+
+* Binary Classification using Machine Learning
+* Healthcare AI Applications
+* Clinical Data Analysis
+* Data Preprocessing Pipelines
+* Model Deployment with Flask
+* End-to-End ML System Development
+
+### Suitable For
+
+* Academic Mini Projects
+* Final-Year Projects
+* Machine Learning Portfolios
+* Internship Applications
+* LinkedIn Project Showcases
+
+---
+
+## 👤 Author
 
 **M V Karthikeya**
 
@@ -380,9 +463,11 @@ Machine Learning Enthusiast • Python Developer • Healthcare AI Projects
 
 ---
 
-# 📜 License
+## 📜 License
 
-Licensed under the MIT License.
+This project is licensed under the **MIT License**.
+
+All predictions generated by this application are strictly for educational and demonstration purposes and must not be used for real-world medical diagnosis.
 
 ---
 
