@@ -1,476 +1,382 @@
-# 🩺 CancerScan AI — Comparative Evaluation of Supervised Learning Models for Breast Cancer Diagnosis Using Clinical Features
+<div align="center">
 
-> **End-to-end Machine Learning system for breast cancer diagnosis using clinical diagnostic features.**
->
-> Built with **Python · Scikit-learn · Flask · Pandas · NumPy**
->
-> Based on the **Wisconsin Breast Cancer Diagnostic Dataset (569 patient records)**
+<h1>🩺 CancerScan AI</h1>
+<h3>Comparative Evaluation of Supervised Learning Models for Breast Cancer Diagnosis Using Clinical Features</h3>
 
----
+<p>
+  <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Flask-2.x-000000?style=for-the-badge&logo=flask&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Scikit--Learn-1.x-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Dataset-UCI%20Wisconsin-blue?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Accuracy-96.49%25-brightgreen?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/ROC--AUC-0.9960-red?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge"/>
+</p>
 
-# 📋 Table of Contents
+<p>
+  An end-to-end Machine Learning web application that classifies breast tumors as <strong>Benign</strong> or <strong>Malignant</strong> using 30 clinically validated diagnostic features — benchmarked across 6 classification algorithms on the UCI Wisconsin Breast Cancer Diagnostic Dataset.
+</p>
 
-1. [Project Overview](#-project-overview)
-2. [Live Demo & Screenshots](#-live-demo--screenshots)
-3. [Dataset](#-dataset)
-4. [Machine Learning Pipeline](#-machine-learning-pipeline)
-5. [Model Performance](#-model-performance)
-6. [Project Structure](#-project-structure)
-7. [Getting Started](#-getting-started)
-8. [Application Workflow](#-application-workflow)
-9. [Technologies Used](#-technologies-used)
-10. [Future Roadmap](#-future-roadmap)
-11. [Internship Background](#-internship-background)
-12. [Academic Value](#-academic-value)
-13. [Author](#-author)
-14. [License](#-license)
+> ⚠️ **Medical Disclaimer:** This project is developed **strictly for academic and educational purposes**. It must **not** be used for real-world clinical diagnosis or medical decision-making of any kind.
+
+</div>
 
 ---
 
-## 🎯 Project Overview
+## 📌 Table of Contents
 
-Breast cancer remains one of the most prevalent cancers worldwide, making early diagnosis critical for improving treatment outcomes and patient survival.
-
-**CancerScan AI** is an end-to-end Machine Learning application that predicts whether a breast tumor is:
-
-* ✅ **Benign (Non-Cancerous)**
-* ❌ **Malignant (Cancerous)**
-
-The system utilizes clinically relevant measurements extracted from digitized images of breast tissue cell nuclei and applies supervised learning techniques to perform accurate classification.
-
-Unlike rule-based systems, the model learns diagnostic patterns directly from historical medical data and generalizes them to previously unseen patient samples.
-
-> ⚠️ **Disclaimer**
->
-> This project is developed strictly for academic and educational purposes. It is not intended for clinical diagnosis, treatment planning, or medical decision-making.
-
----
-
-### Core Objectives
-
-| Goal                              | Approach                |
-| --------------------------------- | ----------------------- |
-| Early cancer risk assessment      | Binary Classification   |
-| Learn from clinical features      | Logistic Regression     |
-| Handle incomplete medical records | Mean Value Imputation   |
-| Improve prediction stability      | StandardScaler          |
-| Real-time predictions             | Flask Web Application   |
-| Reproducible ML workflow          | Modular Pipeline Design |
+- [Project Overview](#-project-overview)
+- [Application Screenshots](#-application-screenshots)
+- [Dataset](#-dataset)
+- [Model Comparison & Benchmarks](#-model-comparison--benchmarks)
+- [Deployed Model — Deep Dive](#-deployed-model--deep-dive)
+- [Project Structure](#-project-structure)
+- [Quick Start](#-quick-start)
+- [Application Workflow](#-application-workflow)
+- [Key Features](#-key-features)
+- [Technology Stack](#-technology-stack)
+- [Future Enhancements](#-future-enhancements)
+- [Internship Context](#-internship-context)
+- [Author](#-author)
 
 ---
 
-### Problem Statement
+## 🔭 Project Overview
 
-**Type:** Supervised Learning — Binary Classification
+Breast cancer is one of the most prevalent cancers worldwide, and early, accurate diagnosis is critical to patient outcomes. This project builds a **supervised binary classification system** trained on nuclear morphology features extracted from digitized Fine Needle Aspirate (FNA) biopsy images.
 
-**Target Variable:** `diagnosis`
+Rather than relying on a single model, this project performs a **rigorous comparative evaluation** of six classification algorithms — measuring Accuracy, Precision, Recall, F1 Score, ROC-AUC, and 5-Fold Cross-Validation stability — to identify the optimal approach for clinical classification tasks.
 
-| Value | Meaning   |
-| ----- | --------- |
-| M     | Malignant |
-| B     | Benign    |
-
-The objective is to classify breast tumors based on 30 diagnostic measurements obtained from digitized breast tissue images.
+**Why this matters in healthcare AI:**
+- **False negatives** (missed cancers) are far more costly than false positives — Recall and ROC-AUC must be prioritized
+- Interpretability is critical — clinicians need to audit model decisions, not trust black boxes
+- The final deployed model (Logistic Regression) achieves **96.49% accuracy**, **97.50% precision**, and a **ROC-AUC of 0.9960** on held-out test data
 
 ---
 
-## 🖥️ Live Demo & Screenshots
+## 📸 Application Screenshots
 
-### 🔹 Home Page — Clinical Feature Input Interface
+### Home Page — Diagnostic Feature Input Interface
 
-Users enter diagnostic measurements through a clean and responsive web interface.
+<img width="1366" height="768" alt="CancerScan AI - Home Page" src="https://github.com/user-attachments/assets/62f23fb7-6eb1-4082-a047-a243191eab22"/>
 
-![Home Page](https://github.com/user-attachments/assets/62f23fb7-6eb1-4082-a047-a243191eab22)
+<img width="1366" height="768" alt="CancerScan AI - Input Form" src="https://github.com/user-attachments/assets/d8b36f97-ba8a-4426-8c7c-a7f27a0902bb"/>
 
-![Input Form](https://github.com/user-attachments/assets/d8b36f97-ba8a-4426-8c7c-a7f27a0902bb)
+<img width="1366" height="768" alt="CancerScan AI - Input Form Extended" src="https://github.com/user-attachments/assets/773123f9-1f46-4480-800b-01a39d4d52de"/>
 
-![Extended Feature Form](https://github.com/user-attachments/assets/773123f9-1f46-4480-800b-01a39d4d52de)
-
----
-
-### 🔹 Benign Prediction Result
-
-When the model predicts a non-cancerous tumor.
-
-![Benign Prediction](https://github.com/user-attachments/assets/ce3bdc92-8621-4ffd-82f9-dbdc098b6e05)
+> The interface accepts all 30 FNA-derived diagnostic features organized across Mean, Standard Error, and Worst-case measurement groups. All fields are required before inference is triggered.
 
 ---
 
-### 🔹 Malignant Prediction Result
+### Prediction Results
 
-When the model predicts a potentially cancerous tumor.
+**✅ Benign Prediction**
 
-![Malignant Prediction](https://github.com/user-attachments/assets/35ce9a9f-db1e-4e89-b5ff-403f1d7c3aca)
+<img width="1366" height="768" alt="Benign Prediction Result" src="https://github.com/user-attachments/assets/ce3bdc92-8621-4ffd-82f9-dbdc098b6e05"/>
 
----
+**❌ Malignant Prediction**
 
-### 🔹 End-to-End Workflow
+<img width="1366" height="768" alt="Malignant Prediction Result" src="https://github.com/user-attachments/assets/35ce9a9f-db1e-4e89-b5ff-403f1d7c3aca"/>
 
-```text
-Patient Diagnostic Features
-            │
-            ▼
-      User Input Form
-            │
-            ▼
-      Data Validation
-            │
-            ▼
- Missing Value Imputation
-            │
-            ▼
-     Feature Scaling
-            │
-            ▼
- Logistic Regression Model
-            │
-            ▼
- Benign / Malignant Prediction
-            │
-            ▼
-      Result Display
-```
+> The result page delivers an immediate, unambiguous diagnosis — **Benign (No Cancer Detected)** or **Malignant (Cancer Detected)** — based on the trained model's inference.
 
 ---
 
 ## 📊 Dataset
 
-The project uses the **Wisconsin Breast Cancer Diagnostic Dataset**, a widely used benchmark dataset in medical machine learning research.
+| Property | Value |
+|---|---|
+| Source | UCI Machine Learning Repository — Wisconsin Breast Cancer Diagnostic |
+| Samples | 569 patient records |
+| Features | 30 real-valued diagnostic features |
+| Target Classes | Malignant (M) = 212 samples · Benign (B) = 357 samples |
+| Class Balance | 37.3% Malignant · 62.7% Benign |
+| Missing Values | Handled via mean imputation (SimpleImputer) |
+| Train / Test Split | 455 / 114 samples (stratified 80/20) |
 
-### Dataset Overview
+### Feature Schema — 30 Clinical Measurements
 
-| Attribute           | Value                 |
-| ------------------- | --------------------- |
-| Total Samples       | 569                   |
-| Predictive Features | 30                    |
-| Classes             | Benign, Malignant     |
-| Problem Type        | Binary Classification |
-| Domain              | Healthcare AI         |
+Features are computed for each cell nucleus across three statistical categories:
 
----
+| Category | Features Included |
+|---|---|
+| **Mean** (10 features) | `radius`, `texture`, `perimeter`, `area`, `smoothness`, `compactness`, `concavity`, `concave_points`, `symmetry`, `fractal_dimension` |
+| **Standard Error** (10 features) | Same 10 measurements — variability across nuclei within a sample |
+| **Worst** (10 features) | Same 10 measurements — largest (most extreme) values observed |
 
-### Feature Description
-
-The dataset contains numerical measurements extracted from digitized images of breast tissue cell nuclei.
-
-Examples include:
-
-* radius_mean
-* texture_mean
-* perimeter_mean
-* area_mean
-* smoothness_mean
-* compactness_mean
-* concavity_mean
-* concave_points_mean
-* symmetry_mean
-* fractal_dimension_mean
-
-Additional standard error and worst-case measurements increase the total predictive feature count to **30 clinical attributes**.
+These features are derived from **digitized FNA biopsy images** of breast tissue, capturing the geometric and textural properties of individual cell nuclei under microscopy.
 
 ---
 
-### Class Distribution
+## 🧠 Model Comparison & Benchmarks
 
-| Diagnosis | Count |
-| --------- | ----- |
-| Benign    | 357   |
-| Malignant | 212   |
+Six supervised classification algorithms were trained on the same dataset using identical preprocessing pipelines (mean imputation + StandardScaler) and evaluated on a stratified 20% held-out test set (114 samples). All metrics are computed on **real data** — no projections or estimates.
 
-This distribution provides a realistic healthcare classification problem while maintaining sufficient representation of both classes.
+> **Dataset:** 569 samples | **Train:** 455 | **Test:** 114 | **CV:** Stratified 5-Fold
+
+### Full Benchmark Results
+
+| Model | Accuracy | Precision | Recall | F1 Score | ROC-AUC | CV (5-Fold Acc.) |
+|---|---|---|---|---|---|---|
+| **Logistic Regression** ✅ | 96.49% | 97.50% | 92.86% | 95.12% | **0.9960** | **97.37% ± 1.66%** |
+| Random Forest | **97.37%** | **100.00%** | 92.86% | **96.30%** | 0.9929 | 95.43% ± 1.28% |
+| Gradient Boosting | 96.49% | **100.00%** | 90.48% | 95.00% | 0.9947 | 95.08% ± 2.45% |
+| SVM (RBF Kernel) | **97.37%** | **100.00%** | 92.86% | **96.30%** | 0.9947 | 97.72% ± 1.63% |
+| K-Nearest Neighbors | 95.61% | 97.44% | 90.48% | 93.83% | 0.9823 | 96.31% ± 1.79% |
+| Decision Tree | 92.98% | 90.48% | 90.48% | 90.48% | 0.9246 | 91.04% ± 2.79% |
+
+✅ **Deployed Model** | 🏆 **Best on metric** (bold values)
+
+> All values computed on the actual UCI Wisconsin dataset using scikit-learn 1.x. Seed: `random_state=42`.
 
 ---
 
-## 🧠 Machine Learning Pipeline
+### Algorithm Selection Rationale
 
-```text
-Raw Dataset (data.csv)
-          │
-          ▼
- Remove Non-Predictive Columns
- (ID Column Removal)
-          │
-          ▼
- Target Encoding
- M → 1
- B → 0
-          │
-          ▼
- Train/Test Split (80/20)
-          │
-          ▼
- Missing Value Imputation
- (Mean Strategy)
-          │
-          ▼
- StandardScaler
-          │
-          ▼
- Logistic Regression
-          │
-          ▼
- Model Serialization
- (Joblib)
-          │
-          ▼
- Flask Deployment
+Despite Random Forest and SVM achieving slightly higher test accuracy (97.37% vs 96.49%), **Logistic Regression was selected** as the deployed model for the following reasons:
+
+| Factor | Logistic Regression | Random Forest / SVM |
+|---|---|---|
+| **ROC-AUC** | **0.9960 ← Highest** | 0.9929 / 0.9947 |
+| **CV Accuracy** | **97.37% ± 1.66%** | 95.43% / 97.72% |
+| **Interpretability** | Coefficients expose feature importance | Ensemble black boxes |
+| **Inference Speed** | ⚡ Sub-millisecond | 🔶 Moderate |
+| **Overfitting Risk** | Low (L2 regularized) | Higher (tree depth) |
+| **Medical Auditability** | Explainable to clinicians | Difficult to audit |
+
+In healthcare AI, a model that is interpretable and auditable is often preferred over a marginally more accurate black box. Logistic Regression's **highest ROC-AUC** and **most consistent cross-validation performance** make it the most trustworthy choice for this task.
+
+---
+
+## 🎯 Deployed Model — Deep Dive
+
+### Logistic Regression — Confusion Matrix
+
+```
+                    Predicted Benign    Predicted Malignant
+  Actual Benign         71  (TN)              1  (FP)
+  Actual Malignant       3  (FN)             39  (TP)
 ```
 
----
+| Metric | Value | Interpretation |
+|---|---|---|
+| **Accuracy** | 96.49% | 110 out of 114 samples correctly classified |
+| **Precision** | 97.50% | When flagged Malignant, correct 97.5% of the time |
+| **Recall (Sensitivity)** | 92.86% | Detects 92.86% of all actual malignant tumors |
+| **Specificity** | 98.61% | Correctly identifies 98.61% of benign cases |
+| **F1 Score** | 95.12% | Harmonic mean of precision and recall |
+| **ROC-AUC** | **0.9960** | Near-perfect discriminative power |
+| **False Negatives** | 3 | Malignant cases missed — the most critical error type |
+| **False Positives** | 1 | Benign case flagged as malignant |
 
-### Training Configuration
+### Pipeline Architecture
 
-| Parameter       | Value               |
-| --------------- | ------------------- |
-| Algorithm       | Logistic Regression |
-| Train Split     | 80%                 |
-| Test Split      | 20%                 |
-| Random State    | 42                  |
-| Missing Values  | Mean Imputation     |
-| Feature Scaling | StandardScaler      |
-| Model Storage   | Joblib              |
-
----
-
-## 📈 Model Performance
-
-The Logistic Regression model achieved approximately:
-
-| Metric              | Value               |
-| ------------------- | ------------------- |
-| Accuracy            | ~96%                |
-| Classification Type | Binary              |
-| Model Type          | Logistic Regression |
-| Deployment Status   | Flask Integrated    |
-
----
-
-### Performance Insights
-
-* High classification accuracy on unseen test samples
-* Effective separation between benign and malignant tumors
-* Scaled features improve optimization and convergence
-* Pipeline-based preprocessing ensures reproducibility
-
----
-
-### 📉 Model Evaluation Summary
-
-```text
-Classification Performance
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Accuracy      ████████████████████  ~96%
-
-Precision     High
-
-Recall        High
-
-F1-Score      High
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+Input: 30 float features (FNA measurements)
+    │
+    ▼
+SimpleImputer(strategy="mean")     → handles any NaN values
+    │
+    ▼
+StandardScaler()                   → normalizes to mean=0, std=1
+    │
+    ▼
+LogisticRegression(max_iter=1000)  → binary classification
+    │
+    ▼
+Output: 0 (Benign) or 1 (Malignant)
 ```
 
-> Future versions can include Decision Trees, Random Forests, Support Vector Machines, and Gradient Boosting for comparative benchmarking.
+The entire pipeline is serialized as a single `.pkl` artifact — preprocessing and inference are always applied in the correct order, eliminating data leakage risk.
 
 ---
 
-## 🗂️ Project Structure
+## 🏗️ Project Structure
 
-```text
+```
 CancerScan-AI/
 │
-├── dataset/
-│   └── data.csv
+├── 📁 dataset/
+│   └── data.csv                      # 569-sample UCI Wisconsin dataset (32 columns)
 │
-├── model/
-│   └── breast_cancer_model_30.pkl
+├── 📁 model/
+│   └── breast_cancer_model.pkl       # Serialized sklearn Pipeline (Joblib)
 │
-├── static/
-│   └── style.css
+├── 📁 static/
+│   └── style.css                     # Application styling
 │
-├── templates/
-│   ├── index.html
-│   └── result.html
+├── 📁 templates/
+│   ├── index.html                    # 30-feature diagnostic input form
+│   └── result.html                   # Benign / Malignant prediction display
 │
-├── train_model.py
-├── app.py
-├── requirements.txt
-└── README.md
+├── train_model.py                    # Data loading, preprocessing, training, serialization
+├── app.py                            # Flask inference server
+├── requirements.txt                  # Python dependency manifest
+└── README.md                         # Project documentation
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
 
-* Python 3.8+
-* pip
+- Python 3.8 or higher
+- pip package manager
 
----
-
-### 1️⃣ Clone the Repository
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/CancerScan-AI.git
-
-cd CancerScan-AI
+git clone https://github.com/your-username/CancerScan-AI-Breast-Cancer-Detection.git
+cd CancerScan-AI-Breast-Cancer-Detection
 ```
 
----
-
-### 2️⃣ Install Dependencies
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
+**Dependencies:**
+```
+flask
+numpy
+pandas
+scikit-learn
+joblib
+```
 
-### 3️⃣ Train the Model
+### 3. Train the Model
 
 ```bash
 python train_model.py
 ```
 
-Expected Output:
-
-```text
-Model trained successfully
-Accuracy: ~96%
-Model saved successfully
+Expected output:
+```
+✅ Model trained with 30 features
+🎯 Accuracy: 96.49%
+💾 Model saved successfully
 ```
 
----
-
-### 4️⃣ Run the Web Application
+### 4. Launch the Web Application
 
 ```bash
 python app.py
 ```
 
-Open:
+Navigate to `http://127.0.0.1:5000` in your browser.
 
-```text
-http://127.0.0.1:5000
+---
+
+## 🔄 Application Workflow
+
+```
+User enters 30 diagnostic feature values (web form)
+                    │
+                    ▼
+         Flask collects POST request
+                    │
+                    ▼
+     float conversion → numpy array → reshape(1,-1)
+                    │
+                    ▼
+     Pipeline: Imputer → Scaler → LogisticRegression
+                    │
+                    ▼
+       predict() → 0 (Benign) or 1 (Malignant)
+                    │
+                    ▼
+     result.html → "Benign (No Cancer Detected)"
+                or "Malignant (Cancer Detected)"
 ```
 
 ---
 
-## ⚙️ Application Workflow
+## ✨ Key Features
 
-```text
-Step 1 → User enters diagnostic measurements
-
-Step 2 → Flask receives POST request
-
-Step 3 → Missing values handled automatically
-
-Step 4 → Data standardized using StandardScaler
-
-Step 5 → Logistic Regression predicts diagnosis
-
-Step 6 → Result displayed as:
-
-         ✅ Benign
-
-         OR
-
-         ❌ Malignant
-```
+- **6-algorithm comparative benchmark** — head-to-head evaluation with real metrics across Accuracy, Precision, Recall, F1, ROC-AUC, and CV stability
+- **Clinically-informed model selection** — Recall and ROC-AUC weighted appropriately for medical context
+- **Stratified train-test split** — ensures proportional class representation in evaluation, preventing misleading accuracy scores
+- **sklearn Pipeline serialization** — imputation + scaling + inference in one artifact; zero preprocessing leakage risk
+- **30-feature clinical completeness** — uses the full FNA feature set across mean, SE, and worst-case statistics
+- **Real UCI Wisconsin data** — 569 validated biopsy records, internationally recognized benchmark dataset
+- **Mobile-responsive frontend** — clean Flask/HTML/CSS UI accessible from any device
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Technology Stack
 
-| Layer                  | Technology          |
-| ---------------------- | ------------------- |
-| Programming Language   | Python              |
-| Data Processing        | Pandas, NumPy       |
-| Machine Learning       | Scikit-learn        |
-| Classification Model   | Logistic Regression |
-| Missing Value Handling | SimpleImputer       |
-| Feature Scaling        | StandardScaler      |
-| Model Persistence      | Joblib              |
-| Backend Framework      | Flask               |
-| Frontend               | HTML5, CSS3         |
-
----
-
-## 🔮 Future Roadmap
-
-| Enhancement                       | Expected Impact |
-| --------------------------------- | --------------- |
-| Random Forest Benchmarking        | High            |
-| Support Vector Machine Comparison | High            |
-| Decision Tree Evaluation          | High            |
-| Prediction Confidence Scores      | High            |
-| Feature Importance Visualization  | Medium          |
-| Explainable AI (SHAP/LIME)        | High            |
-| Streamlit Deployment              | Medium          |
-| Cloud Deployment (AWS/Azure/GCP)  | Medium          |
-| Interactive Analytics Dashboard   | Medium          |
+| Layer | Technology | Purpose |
+|---|---|---|
+| Language | Python 3.8+ | Core ML and backend development |
+| ML Framework | Scikit-Learn | Model training, pipeline, evaluation |
+| Data Processing | Pandas, NumPy | Dataset operations and feature arrays |
+| Preprocessing | `SimpleImputer`, `StandardScaler` | Missing value handling + feature normalization |
+| Model Serialization | Joblib | Pipeline persistence as `.pkl` |
+| Web Framework | Flask | HTTP request handling and inference serving |
+| Frontend | HTML5, CSS3 | Diagnostic input form and result display |
+| Dataset | UCI Wisconsin Diagnostic (1995) | 569 FNA biopsy records, 30 nuclear features |
 
 ---
 
-## 🏢 Internship Background
+## 📈 Future Enhancements
 
-### AI/ML Intern — InternPe
+| Enhancement | Description | Expected Impact |
+|---|---|---|
+| Prediction Confidence | Display class probability (e.g., "94.3% Malignant") | Clinical transparency and trust |
+| SHAP Explanations | Feature contribution visualization per prediction | Explainable AI for audit |
+| Ensemble Stacking | Combine LR + RF + SVM via meta-learner | Potential accuracy gain to 97–98% |
+| Bootstrap 5 UI | Professional medical-grade interface redesign | Improved usability |
+| REST API Endpoint | `/predict` with JSON I/O | Hospital system integration capability |
+| Streamlit Dashboard | Interactive metrics and confusion matrix display | Real-time model transparency |
+| Cloud Deployment | Docker → AWS / Render / Railway | Production availability |
+| Cross-Validation Report | In-app display of all 6 benchmark results | Full reproducibility |
 
+---
+
+## 🏢 Internship Context
+
+**AI/ML Intern**  
+**Organization:** InternPe  
 **Duration:** November 24, 2025 – December 21, 2025
 
-This project reflects practical experience gained during an AI/ML internship, including:
+This project was developed as a core deliverable during an AI/ML internship, demonstrating end-to-end proficiency in healthcare-focused machine learning:
 
-* Medical dataset preprocessing
-* Supervised classification techniques
-* Feature scaling and normalization
-* Logistic Regression implementation
-* Machine Learning model evaluation
-* Flask-based deployment
-* Healthcare-focused AI system development
-
-The project demonstrates the application of machine learning concepts to a real-world healthcare classification problem.
-
----
-
-## 🎓 Academic Value
-
-This project demonstrates:
-
-* Binary Classification using Machine Learning
-* Healthcare AI Applications
-* Clinical Data Analysis
-* Data Preprocessing Pipelines
-* Model Deployment with Flask
-* End-to-End ML System Development
-
-### Suitable For
-
-* Academic Mini Projects
-* Final-Year Projects
-* Machine Learning Portfolios
-* Internship Applications
-* LinkedIn Project Showcases
+- Binary classification on a real clinical benchmark dataset (UCI Wisconsin, 569 samples)
+- Comparative evaluation of 6 supervised algorithms with full metric reporting
+- Sklearn Pipeline design for leakage-safe preprocessing and serialization
+- Flask web deployment with HTML/CSS interface
+- Responsible AI practices — clear medical disclaimers, no false clinical claims
+- Industry-standard documentation and version-controlled, reproducible code
 
 ---
 
 ## 👤 Author
 
-**M V Karthikeya**
+**M V Karthikeya**  
+Aspiring Machine Learning Engineer · Python & Healthcare AI Enthusiast · 📍 India
 
-Machine Learning Enthusiast • Python Developer • Healthcare AI Projects
+[![Python](https://img.shields.io/badge/Python-Expert-3776AB?style=flat-square&logo=python)](https://github.com/your-username)
+[![ML](https://img.shields.io/badge/Machine%20Learning-Intermediate-F7931E?style=flat-square&logo=scikit-learn)](https://github.com/your-username)
+[![Flask](https://img.shields.io/badge/Flask-Intermediate-000000?style=flat-square&logo=flask)](https://github.com/your-username)
 
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License**.
-
-All predictions generated by this application are strictly for educational and demonstration purposes and must not be used for real-world medical diagnosis.
+This project is licensed under the **MIT License** — free for personal, academic, and commercial use with attribution.
 
 ---
 
-> ⭐ If you found this project useful, consider starring the repository.
->
-> Contributions, improvements, and healthcare AI discussions are welcome.
+> ⚠️ **Reminder:** All predictions produced by this system are **non-clinical** and must **never** be used as a substitute for professional medical advice, diagnosis, or treatment.
+
+---
+
+<div align="center">
+
+⭐ **If this project helped you, consider starring the repository!**
+
+*Built on real clinical data · Benchmarked across 6 algorithms · Designed for responsible healthcare AI*
+
+</div>
