@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>🩺 CancerScan AI</h1>
+<h1>🩺 Comparative Evaluation of Supervised Learning Models for Breast Cancer Diagnosis Using Clinical Feat</h1>
 <h3>Comparative Evaluation of Supervised Learning Models for Breast Cancer Diagnosis Using Clinical Features</h3>
 
 <p>
