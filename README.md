@@ -350,6 +350,10 @@ This project was developed as a core deliverable during an AI/ML internship, dem
 - Responsible AI practices — clear medical disclaimers, no false clinical claims
 - Industry-standard documentation and version-controlled, reproducible code
 
+🔗 **Certificate:** [View on LinkedIn](https://www.linkedin.com/posts/m-v-karthikeya-b26a2131b_internshipcompletion-aiml-machinelearning-activity-7408819858177724416-m1Rt?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFEhlw4BT-6V0rnLIZSzBIoK7YvV2QlbHLc)
+
+🔗 **Watch the Demo:** [LinkedIn Video](https://www.linkedin.com/posts/m-v-karthikeya-b26a2131b_machinelearning-artificialintelligence-datascience-activity-7406349002725777408-Rlo3?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFEhlw4BT-6V0rnLIZSzBIoK7YvV2QlbHLc)
+
 ---
 
 ## 👤 Author
